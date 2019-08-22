@@ -1,0 +1,28 @@
+{
+  "name": "@mhycy/routeros-client",
+  "version": "1.0.0",
+  "description": "RouterOS api client",
+  "main": "index.js",
+  "scripts": {
+    "test:index": "node ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhycy/node-routeros-api.git"
+  },
+  "keywords": [
+    "mikrotik",
+    "routeros",
+    "ros"
+  ],
+  "author": "mhycy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhycy/node-routeros-api/issues"
+  },
+  "homepage": "https://github.com/mhycy/node-routeros-api#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "iconv-lite": "^0.5.0"
+  }
+}

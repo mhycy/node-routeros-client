@@ -14,7 +14,7 @@ const connectOptions = {
     debug: true
 };
 
-logger.info("<Params>ConnectOptions", connectOptions);
+logger.info("<Params> ConnectOptions", connectOptions);
 const client = RouterClient.createClient(connectOptions);
 
 (async function() {
@@ -25,12 +25,12 @@ const client = RouterClient.createClient(connectOptions);
     await client.command("/login").setAttrs({
         name: USER,
         password: PASSWD
-    }).send();
+    }).get();
     
     logger.info(`<Test> Client::Command('/interface/print')`);
     await client.command("/interface/print")
             .equal("type", "pppoe-out")
-            .send();
+            .get();
 
     client.close();
-})()
+})();

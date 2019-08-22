@@ -1,12 +1,12 @@
 const utils = require('./utils.js');
 
 class Builder {
-    constructor(command, sendCallback) {
+    constructor(command, callback) {
         this.command = command;
         this.attrs = {};
         this.queries = [];
 
-        this.sendCallback = sendCallback ? sendCallback : (sentences) => {};
+        this.getCallback = callback ? callback : (sentences) => { return sentences; };
     }
 
     addAttr(name, value) {
@@ -49,17 +49,15 @@ class Builder {
         return this;
     }
 
-    send() {
+    get() {
         let sentences = [this.command];
         for(let key in this.attrs) {
             sentences.push(`=${key}=${this.attrs[key]}`);
         }
 
         sentences = sentences.concat(this.queries);
-        return this.sendCallback(sentences);
+        return this.getCallback(sentences);
     }
 }
 
-module.exports = {
-    Builder
-}
+module.exports = Builder

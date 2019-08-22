@@ -1,11 +1,9 @@
 const net = require('net');
 const events = require('events');
-const util = require('util');
-const chalk = require('chalk');
-
 const utils = require('./utils.js');
+
 const Logger = require('./logger.js')
-const CommandBuilder = require('./command-builder.js').Builder;
+const CommandBuilder = require('./command-builder.js');
 
 class Client extends events.EventEmitter {
     constructor(options) {
@@ -81,7 +79,7 @@ class Client extends events.EventEmitter {
         this.socket.write(utils.encSentences(sentences, this.encoding));
     }
 
-    sendSentencesSync(sentences = []) {
+    sendSentencesAsync(sentences = []) {
         return new Promise((resolve, reject) => {
             try {
                 this.sendSentences(sentences);
@@ -97,22 +95,14 @@ class Client extends events.EventEmitter {
 
     command(command) {
         return new CommandBuilder(command, function(sentences) {
-            return this.sendSentencesSync(sentences);
+            return this.sendSentencesAsync(sentences);
         }.bind(this));
     }
 
     login(name, password) {
-        return this.command("/login").setAttrs({name, password}).send();
+        return this.command("/login").setAttrs({name, password}).get();
     }
     
 }
 
-function createClient(options) {   
-    return new Client(options);
-}
-
-module.exports = {
-    LogLevel: Logger.Level,
-    Client,
-    createClient
-}
+module.exports = Client

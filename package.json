@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mhycy/node-routeros-api.git"
+    "url": "git+https://github.com/mhycy/node-routeros-client.git"
   },
   "keywords": [
     "mikrotik",
@@ -18,9 +18,9 @@
   "author": "mhycy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mhycy/node-routeros-api/issues"
+    "url": "https://github.com/mhycy/node-routeros-client/issues"
   },
-  "homepage": "https://github.com/mhycy/node-routeros-api#readme",
+  "homepage": "https://github.com/mhycy/node-routeros-client#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "iconv-lite": "^0.5.0"
